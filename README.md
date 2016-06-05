@@ -1,16 +1,21 @@
 CandyBot
 ==========
 
-Candybot is a simple bot that gives a candies for social actions. Run from a Raspberry Pi.
+Candybot is a simple bot that gives a candy for social actions. Run from a Raspberry Pi.
 
 Python Code
 
 
+Verstions:
+v0.1 - First prototype. But listen whether his name is mentined in Twitter, 
+	as well as a secret code he give to a User. If user tweet a message with 
+	@fun_robots and some secret code, he will get a candy. Just simple, just fun
 
 
 
 
 Insturctions for makers
+_______________________
 
 1. Setup your RaspberryPi with python environment 
 	
