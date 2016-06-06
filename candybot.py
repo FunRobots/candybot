@@ -3,7 +3,7 @@
 import RPi.GPIO as GPIO
 import time
 import random
-from events_tw import TwitterEvent
+from events_tw import checkMentionInTwitter
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(18,GPIO.OUT)
@@ -26,7 +26,7 @@ try:
         while True:
             print("Make a tweet with following: @fun_robots and {code}".format(code=code))
             try:
-                mode=input("Print DONE and press Enter \n")
+                mode = input("Print DONE and press Enter \n")
                 if mode:
                     break
             except ValueError:
@@ -34,7 +34,7 @@ try:
         time.sleep(5)
 
         ### Check for Twitter mentions and #code
-        get_candy = TwitterEvent.checkMentionInTwitter(code)
+        get_candy = checkMentionInTwitter(code)
         if get_candy:
             print(get_candy)
 
@@ -51,7 +51,6 @@ try:
             print("Right")
             time.sleep(1)
 
-
             ### Finish loop  
         else: 
             print("It seems you don't want a candy! Or, are you kidding me? ")
@@ -62,6 +61,7 @@ try:
 except KeyboardInterrupt:
         p.stop()
         GPIO.cleanup()
+        # print('KeyboardInterrupt')
 
 #code for button switch
 # input_state = GPIO.input(18)
