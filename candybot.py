@@ -9,8 +9,8 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(18,GPIO.OUT)
 # GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)   #button switch 
 p=GPIO.PWM(18,50)
-l_pos = 7.5
-c_pos = 12.5
+c_pos = 7.5
+l_pos = 12.5
 r_pos = 2.5
 p.start(5)
 
@@ -55,7 +55,6 @@ try:
         else: 
             print("It seems you don't want a candy! Or, are you kidding me? ")
 
-        break
     print("Good bye!")
 
 except KeyboardInterrupt:
