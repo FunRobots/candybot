@@ -4,6 +4,7 @@ import RPi.GPIO as GPIO
 import time
 import random
 from events_tw import checkMentionInTwitter
+from gpiozero import Button
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(18,GPIO.OUT)
@@ -13,7 +14,7 @@ c_pos = 7.5
 l_pos = 12.5
 r_pos = 2.5
 p.start(5)
-
+button = Button(14)
 
 try:
     while True:
@@ -31,7 +32,8 @@ try:
                     break
             except ValueError:
                 print("Not a number")
-        time.sleep(5)
+        # time.sleep(5)
+        button.wait_for_press()
 
         ### Check for Twitter mentions and #code
         get_candy = checkMentionInTwitter(code)
