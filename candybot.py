@@ -4,11 +4,11 @@ import RPi.GPIO as GPIO
 import time
 import random
 from events_tw import checkMentionInTwitter
+from out_7seg_led import display_4digits
 from gpiozero import Button
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(18,GPIO.OUT)
-# GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)   #button switch 
 p=GPIO.PWM(18,50)
 c_pos = 7.5
 l_pos = 12.5
@@ -20,12 +20,15 @@ try:
     while True:
 
         ### Generate #code
-        code = "#{code}".format(code=random.randint(1000, 9999))
+        code = "{code}".format(code=random.randint(1000, 9999))
         # print("PRINT code:", code, "\n")
+
+        ###Display code on 7seg-LED
+        display_4digits(code)
 
         ### Wait for Button press
         while True:
-            print("Make a tweet with following: @fun_robots and {code}".format(code=code))
+            print("Make a tweet with following: @fun_robots and #{code}  And then, press the BUTTON".format(code=code))
             try:
                 mode = input("Print DONE and press Enter \n")
                 if mode:
@@ -41,15 +44,16 @@ try:
             print(get_candy)
 
             ### Open Candy Jar 
-            p.ChangeDutyCycle(l_pos)
+            p.ChangeDutyCycle(l_pos) #put servo to left position
             print("Left")
             time.sleep(1)
-            # # p.ChangeDutyCycle(c_pos)
+
+            # # p.ChangeDutyCycle(c_pos) #put servo to middle position
             # # print "Center"
             # # time.sleep(1)
 
             ### Close Candy Jar 
-            p.ChangeDutyCycle(r_pos)
+            p.ChangeDutyCycle(r_pos) #put servo to right position
             print("Right")
             time.sleep(1)
 
@@ -62,10 +66,3 @@ try:
 except KeyboardInterrupt:
         p.stop()
         GPIO.cleanup()
-        # print('KeyboardInterrupt')
-
-#code for button switch
-# input_state = GPIO.input(18)
-#     if input_state == False:
-#         print('Button Pressed')
-#         time.sleep(0.2)
