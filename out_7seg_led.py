@@ -67,19 +67,22 @@ def display_4digits(code):
         print(s)
 
 
-    for digit in range(4):
-        GPIO.output(segments, (num[s[digit]]))
-        GPIO.output(digits[digit], 0)
-        time.sleep(0.001)
-        GPIO.output(digits[digit], 1)
-   
     # for digit in range(4):
-    #     print("Output digit on LED: {}".format(s[digit]))
-
     #     GPIO.output(segments, (num[s[digit]]))
-        #loop below is the same as line of code above
-        # for loop in range(0,7):
-        #     GPIO.output(segments[loop], num[s[digit]][loop])
+    #     GPIO.output(digits[digit], 0)
+    #     time.sleep(0.001)
+    #     GPIO.output(digits[digit], 1)
+   
+    for digit in range(4):
+        print("Output digit on LED: {}".format(s[digit]))
+
+        GPIO.output(segments, (num[s[digit]]))
+        loop below is the same as line of code above
+        for loop in range(0,7):
+            GPIO.output(segments[loop], num[s[digit]][loop])
+            GPIO.output(digits[digit], 0)
+            time.sleep(0.001)
+            GPIO.output(digits[digit], 1)
 
 
                     # print("GPIO.output({}, {})".format(segments[loop], num[s[digit]][loop]))
