@@ -5,6 +5,11 @@ import time
 import random
 from events_tw import checkMentionInTwitter
 from out_7seg_led import display_4digits
+
+from gpiozero.pins.native import NativePin
+import gpiozero.devices
+# Force the default pin implementation to be NativePin
+gpiozero.devices.DefaultPin = NativePin
 from gpiozero import Button
 
 GPIO.setmode(GPIO.BOARD)
