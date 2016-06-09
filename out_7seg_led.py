@@ -37,6 +37,8 @@ def display_4digits(code):
     '8':(1,1,1,1,1,1,1),
     '9':(1,1,1,1,0,1,1)}
 
+    # try:
+    #     while True:
     if code:
         s = str(code).rjust(4)
         print(s)
@@ -46,10 +48,18 @@ def display_4digits(code):
         for loop in range(0,7):
             GPIO.output(segments[loop], num[s[digit]][loop])
 
-            # print("GPIO.output({}, {})".format(segments[loop], num[s[digit]][loop]))
+                    # print("GPIO.output({}, {})".format(segments[loop], num[s[digit]][loop]))
+    # except KeyboardInterrupt:
+    #     GPIO.cleanup()
 
 
 
 ###Test display_4digits()
 code = '4234'
-display_4digits(code)
+
+try:
+    while True:
+        display_4digits(code)
+
+except KeyboardInterrupt:
+    GPIO.cleanup()
