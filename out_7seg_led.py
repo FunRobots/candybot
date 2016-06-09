@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import time
 
 GPIO.setmode(GPIO.BCM) # GPIO.BOARD is used here!!!
 GPIO.setwarnings(False)
@@ -73,7 +74,14 @@ def display_4digits(code):
 
 ###Test display_4digits()
 code = '9991'
-display_4digits(code)
+try:
+    n = 9999
+    while n >= 0:
+        display_4digits(code)
+        n -= 1
+
+finally:
+    GPIO.cleanup()
 
 # try:
 #     while True:
