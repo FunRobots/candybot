@@ -1,21 +1,3 @@
-import RPi.GPIO as GPIO
-
-GPIO.setmode(GPIO.BOARD) # GPIO.BOARD is used here!!!
-GPIO.setwarnings(False)
-GPIO.setup(7, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-segments = (24,10,19,21,23,22,15,11)
-
-for segment in segments:
-    GPIO.setup(segment, GPIO.OUT)
-    GPIO.output(segment, 0)
-
-digits = (26,18,16,13)
-
-for digit in digits:
-    GPIO.setup(digit, GPIO.OUT)
-    GPIO.output(digit, 1)
-
-
 
 def display_4digits(code):
     """ 
@@ -38,7 +20,7 @@ def display_4digits(code):
     '9':(1,1,1,1,0,1,1)}
 
     if code:
-        s = str(digits).rjust(4)
+        s = str(code).rjust(4)
         print(s)
    
     for digit in range(4):

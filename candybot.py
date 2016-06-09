@@ -12,6 +12,7 @@ import gpiozero.devices
 gpiozero.devices.DefaultPin = NativePin
 from gpiozero import Button
 
+
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(12,GPIO.OUT)
 p=GPIO.PWM(12,50)
@@ -20,6 +21,19 @@ l_pos = 12.5
 r_pos = 2.5
 p.start(5)
 button = Button(8)
+
+
+#setup 7segLED
+GPIO.setwarnings(False)
+GPIO.setup(7, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+segments = (24,10,19,21,23,22,15,11)
+for segment in segments:
+    GPIO.setup(segment, GPIO.OUT)
+    GPIO.output(segment, 0)
+digits = (26,18,16,13)
+for digit in digits:
+    GPIO.setup(digit, GPIO.OUT)
+    GPIO.output(digit, 1)
 
 try:
     while True:
