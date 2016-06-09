@@ -7,14 +7,14 @@ from events_tw import checkMentionInTwitter
 from out_7seg_led import display_4digits
 from gpiozero import Button
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(18,GPIO.OUT)
-p=GPIO.PWM(18,50)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(12,GPIO.OUT)
+p=GPIO.PWM(12,50)
 c_pos = 7.5
 l_pos = 12.5
 r_pos = 2.5
 p.start(5)
-button = Button(14)
+button = Button(8)
 
 try:
     while True:
