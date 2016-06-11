@@ -51,6 +51,7 @@ num = {' ':(0,0,0,0,0,0,0,0),
 #     '8':(1,1,1,1,1,1,0,0),
 #     '9':(1,1,1,1,0,1,0,0)}
 
+print("Module out_7seg_led.py have imported")
 
 def display_4digits(code):
     """ 
