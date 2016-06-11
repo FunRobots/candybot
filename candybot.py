@@ -62,6 +62,8 @@ try:
             if button.wait_for_press():
                 print("Button have pressed")
                 break
+            else:
+                continue
                         
 
         ### Check for Twitter mentions and #code
