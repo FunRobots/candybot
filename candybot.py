@@ -42,20 +42,22 @@ try:
         code = "{code}".format(code=random.randint(1000, 9999))
         # print("PRINT code:", code, "\n")
 
-        ###Display code on 7seg-LED
-        out_7seg_led.display_4digits(code)
-
+        
         ### Wait for Button press
-        while True:
-            print("Make a tweet with following: @fun_robots and #{code}  And then, press the BUTTON".format(code=code))
-            try:
-                mode = input("Print DONE and press Enter \n")
-                if mode:
-                    break
-            except ValueError:
-                print("Not a number")
-        # time.sleep(5)
-        button.wait_for_press()
+        print("Make a tweet with following: @fun_robots and #{code}  And then, press the BUTTON".format(code=code))
+        
+        # while True:
+        #     print("Make a tweet with following: @fun_robots and #{code}  And then, press the BUTTON".format(code=code))
+        #     try:
+        #         mode = input("Print DONE and press Enter \n")
+        #         if mode:
+        #             break
+        #     except ValueError:
+        #         print("Not a number")
+
+        ###Display code on 7seg-LED
+        while button.wait_for_press():
+            out_7seg_led.display_4digits(code)            
 
         ### Check for Twitter mentions and #code
         get_candy = checkMentionInTwitter(code)

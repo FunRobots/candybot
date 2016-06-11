@@ -73,7 +73,7 @@ def display_4digits(code):
 
 
 ###Test display_4digits()
-def test_display_4digits(code)
+def test_display_4digits(code):
     try:
         n = 499
         while n >= 0:
