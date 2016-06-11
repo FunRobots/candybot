@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO
 import time
 import random
 from events_tw import checkMentionInTwitter
-from out_7seg_led import display_4digits
+import out_7seg_led
 
 from gpiozero.pins.native import NativePin
 import gpiozero.devices
@@ -13,14 +13,14 @@ gpiozero.devices.DefaultPin = NativePin
 from gpiozero import Button
 
 
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(12,GPIO.OUT)
-p=GPIO.PWM(12,50)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(18,GPIO.OUT)
+p=GPIO.PWM(18,50)
 c_pos = 7.5
 l_pos = 12.5
 r_pos = 2.5
 p.start(5)
-button = Button(8)
+button = Button(14)
 
 
 # #setup 7segLED
@@ -43,7 +43,7 @@ try:
         # print("PRINT code:", code, "\n")
 
         ###Display code on 7seg-LED
-        display_4digits(code)
+        out_7seg_led.display_4digits(code)
 
         ### Wait for Button press
         while True:
