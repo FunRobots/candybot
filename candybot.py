@@ -43,7 +43,7 @@ try:
         # print("PRINT code:", code, "\n")
 
         ###Display code on 7seg-LED
-        # display_4digits(code)
+        display_4digits(code)
 
         ### Wait for Button press
         while True:
@@ -84,4 +84,7 @@ try:
 
 except KeyboardInterrupt:
         p.stop()
+        GPIO.cleanup()
+
+finally:
         GPIO.cleanup()
