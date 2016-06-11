@@ -63,7 +63,7 @@ def display_4digits(code):
 
     if code:
         s = str(code).rjust(4)
-        print(s)
+        # print(s)
 
     for digit in range(4):
         # print("Output digit on LED: {}".format(s[digit]))
