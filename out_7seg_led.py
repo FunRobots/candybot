@@ -6,7 +6,7 @@ GPIO.setwarnings(False)
 # GPIO.setup(7, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # segments = (24,10,19,21,23,22,15,11)
-segments =  (11,4,23,8,7,10,18,25)
+segments =  (11,4,23,8,7,10,15,25)
 # 7seg_segment_pins (11,7,4,2,1,10,5,3) +  100R inline
 GPIO.setup(segments, GPIO.OUT, initial=1)
 #loop below is the same as line of code above
