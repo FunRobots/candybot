@@ -5,23 +5,7 @@ GPIO.setmode(GPIO.BCM) # GPIO.BOARD is used here!!!
 GPIO.setwarnings(False)
 # GPIO.setup(7, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-# segments = (24,10,19,21,23,22,15,11)
-segments =  (11,4,23,8,7,10,18,25)
-# 7seg_segment_pins (11,7,4,2,1,10,5,3) +  100R inline
-GPIO.setup(segments, GPIO.OUT, initial=0)
-#loop below is the same as line of code above
-# for segment in segments:
-#     GPIO.setup(segment, GPIO.OUT)
-#     GPIO.output(segment, 0)
 
-# digits = (26,18,16,13)
-digits = (22,27,17,24)
-# 7seg_digit_pins (12,9,8,6) digits 0-3 respectively
-GPIO.setup(digits, GPIO.OUT, initial=1)
-#loop below is the same as line of code above
-# for digit in digits:
-#     GPIO.setup(digit, GPIO.OUT)
-#     GPIO.output(digit, 1)
 
 #Commode anode 7segLED specs
 #          (a,b,c,d,e,f,g,dp)
@@ -60,6 +44,24 @@ def display_4digits(code):
         High output on appropriate 7-segment LED
     """
 
+    # segments = (24,10,19,21,23,22,15,11)
+    segments =  (11,4,23,8,7,10,18,25)
+    # 7seg_segment_pins (11,7,4,2,1,10,5,3) +  100R inline
+    GPIO.setup(segments, GPIO.OUT, initial=0)
+    #loop below is the same as line of code above
+    # for segment in segments:
+    #     GPIO.setup(segment, GPIO.OUT)
+    #     GPIO.output(segment, 0)
+
+    # digits = (26,18,16,13)
+    digits = (22,27,17,24)
+    # 7seg_digit_pins (12,9,8,6) digits 0-3 respectively
+    GPIO.setup(digits, GPIO.OUT, initial=1)
+    #loop below is the same as line of code above
+    # for digit in digits:
+    #     GPIO.setup(digit, GPIO.OUT)
+    #     GPIO.output(digit, 1)
+
     # try:
     #     while True:
     if code:
@@ -77,7 +79,7 @@ def display_4digits(code):
         print("Output digit on LED: {}".format(s[digit]))
 
         GPIO.output(segments, (num[s[digit]]))
-        loop below is the same as line of code above
+        # loop below is the same as line of code above
         for loop in range(0,7):
             GPIO.output(segments[loop], num[s[digit]][loop])
             GPIO.output(digits[digit], 0)
