@@ -34,7 +34,7 @@ button = Button(14)
 # for digit in digits:
 #     GPIO.setup(digit, GPIO.OUT)
 #     GPIO.output(digit, 1)
-
+T
 try:
     while True:
 
@@ -56,8 +56,11 @@ try:
         #         print("Not a number")
 
         ###Display code on 7seg-LED
-        while button.wait_for_press():
-            out_7seg_led.display_4digits(code)            
+        while True: 
+            out_7seg_led.display_4digits(code)
+            if button.wait_for_press():
+                break
+                        
 
         ### Check for Twitter mentions and #code
         get_candy = checkMentionInTwitter(code)
