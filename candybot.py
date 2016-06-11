@@ -14,26 +14,25 @@ from gpiozero import Button
 
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(18,GPIO.OUT)
-p=GPIO.PWM(18,50)
-c_pos = 7.5
-l_pos = 12.5
-r_pos = 2.5
-p.start(5)
+
+#settings for servo 
+# GPIO.setup(18,GPIO.OUT)
+# p=GPIO.PWM(18,50)
+# c_pos = 7.5
+# l_pos = 12.5
+# r_pos = 2.5
+# p.start(5)
+
+from RPIO import PWM
+servo = PWM.Servo()
+# Set servo on GPIO17 to 900.s (0.9ms)
+servo.set_servo(18, 900)
+# Set servo on GPIO17 to 2000.s (2.0ms)
+#servo.set_servo(17, 2000)
+
+#settigns for button
 button = Button(14)
 
-
-# #setup 7segLED
-# GPIO.setwarnings(False)
-# GPIO.setup(7, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-# segments = (24,10,19,21,23,22,15,11)
-# for segment in segments:
-#     GPIO.setup(segment, GPIO.OUT)
-#     GPIO.output(segment, 0)
-# digits = (26,18,16,13)
-# for digit in digits:
-#     GPIO.setup(digit, GPIO.OUT)
-#     GPIO.output(digit, 1)
 
 try:
     while True:
@@ -67,7 +66,8 @@ try:
             print(get_candy)
 
             ### Open Candy Jar 
-            p.ChangeDutyCycle(l_pos) #put servo to left position
+            # p.ChangeDutyCycle(l_pos) #put servo to left position
+            servo.set_servo(18, 750)
             print("Left")
             time.sleep(1)
 
@@ -76,7 +76,8 @@ try:
             # # time.sleep(1)
 
             ### Close Candy Jar 
-            p.ChangeDutyCycle(r_pos) #put servo to right position
+            # p.ChangeDutyCycle(r_pos) #put servo to right position
+            servo.set_servo(18, 2500)
             print("Right")
             time.sleep(1)
 
