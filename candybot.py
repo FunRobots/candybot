@@ -56,14 +56,9 @@ try:
         #         print("Not a number")
 
         ###Display code on 7seg-LED
-        while True: 
-            print("While loop have started")
+        while button.is_pressed != True: 
             out_7seg_led.display_4digits(code)
-            if button.wait_for_press():
-                print("Button have pressed")
-                break
-            else:
-                continue
+
                         
 
         ### Check for Twitter mentions and #code
