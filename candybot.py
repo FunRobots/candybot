@@ -5,6 +5,7 @@ import time
 import random
 from events_tw import checkMentionInTwitter
 import out_7seg_led
+from gpiozero_ servo import Servo
 
 from gpiozero.pins.native import NativePin
 import gpiozero.devices
@@ -28,12 +29,13 @@ GPIO.setmode(GPIO.BCM)
 # r_pos = 2.5
 # p.start(5)
 
-from RPIO import PWM
-servo = PWM.Servo()
+servo = Servo(18)
+serv.angle(180)
+
 # servo = PWMOutputDevice(PiGPIOPin())
 # servo.set_servo_pulsewidth(18, 0)
 # Set servo on GPIO17 to 900.s (0.9ms)
-servo.set_servo(18, 900)
+# servo.set_servo(18, 900)
 # Set servo on GPIO17 to 2000.s (2.0ms)
 #servo.set_servo(17, 2000)
 
@@ -76,7 +78,7 @@ try:
 
             ### Open Candy Jar 
             # p.ChangeDutyCycle(l_pos) #put servo to left position
-            servo.set_servo(18, 1200)
+            # servo.set_servo(18, 1200)
             # servo.set_servo_pulsewidth(18, 1000)
             print("Left")
             time.sleep(1)
