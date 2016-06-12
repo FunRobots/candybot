@@ -33,7 +33,7 @@ servo = PWM.Servo()
 # servo = PWMOutputDevice(PiGPIOPin())
 # servo.set_servo_pulsewidth(18, 0)
 # Set servo on GPIO17 to 900.s (0.9ms)
-# servo.set_servo(18, 900)
+servo.set_servo(18, 900)
 # Set servo on GPIO17 to 2000.s (2.0ms)
 #servo.set_servo(17, 2000)
 
@@ -69,12 +69,14 @@ try:
 
         ### Check for Twitter mentions and #code
         get_candy = checkMentionInTwitter(code)
+
+        ### Move servo
         if get_candy:
             print(get_candy)
 
             ### Open Candy Jar 
             # p.ChangeDutyCycle(l_pos) #put servo to left position
-            servo.set_servo(18, 750)
+            servo.set_servo(18, 1200)
             # servo.set_servo_pulsewidth(18, 1000)
             print("Left")
             time.sleep(1)
