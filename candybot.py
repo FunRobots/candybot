@@ -10,7 +10,8 @@ from gpiozero.pins.native import NativePin
 import gpiozero.devices
 # Force the default pin implementation to be NativePin
 gpiozero.devices.DefaultPin = NativePin
-from gpiozero import Button
+from gpiozero import Button, PWMOutputDevice
+from gpiozero.pins.pigpiod import PiGPIOPin
 
 
 GPIO.setmode(GPIO.BCM)
@@ -23,10 +24,12 @@ GPIO.setmode(GPIO.BCM)
 # r_pos = 2.5
 # p.start(5)
 
-from RPIO import PWM
-servo = PWM.Servo()
+# from RPIO import PWM
+# servo = PWM.Servo()
+servo = PWMOutputDevice(PiGPIOPin(pin=18, active_high=False, initial_value=0, frequency=50))
+servo.set_servo_pulsewidth(18, 0)
 # Set servo on GPIO17 to 900.s (0.9ms)
-servo.set_servo(18, 900)
+# servo.set_servo(18, 900)
 # Set servo on GPIO17 to 2000.s (2.0ms)
 #servo.set_servo(17, 2000)
 
@@ -67,7 +70,8 @@ try:
 
             ### Open Candy Jar 
             # p.ChangeDutyCycle(l_pos) #put servo to left position
-            servo.set_servo(18, 750)
+            # servo.set_servo(18, 750)
+            servo.set_servo_pulsewidth(18, 1000)
             print("Left")
             time.sleep(1)
 
@@ -77,7 +81,8 @@ try:
 
             ### Close Candy Jar 
             # p.ChangeDutyCycle(r_pos) #put servo to right position
-            servo.set_servo(18, 2500)
+            # servo.set_servo(18, 2500)
+            servo.set_servo_pulsewidth(18, 2000)
             print("Right")
             time.sleep(1)
 
