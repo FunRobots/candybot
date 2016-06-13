@@ -28,9 +28,11 @@ def servo_position(pos):
     """
     
     if pos == 0:
+        print("pos == 0")
         while True:
             try:
                 wiringpi.pwmWrite(18,40)
+                print("wiringpi.pwmWrite(18,40)")
             except KeyboardInterrupt:
                 # clean up
                 wiringpi.pwmWrite(18, 40)
@@ -54,9 +56,11 @@ def servo_position(pos):
                 print("Cleanup GPIO")
                 break
     if pos == 2:
+        print("pos == 2")
         while True:
             try:
                 wiringpi.pwmWrite(18,200)
+                print("wiringpi.pwmWrite(18,200)")
             except KeyboardInterrupt:
                 # clean up
                 wiringpi.pwmWrite(18, 40)
