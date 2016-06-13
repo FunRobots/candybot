@@ -14,7 +14,6 @@ import out_servo
 
 
 #use Broadcom (BCM) pin numbers
-wiringpi.wiringPiSetupGpio()
 GPIO.setmode(GPIO.BCM)
 gpiozero.devices.DefaultPin = NativePin
 
