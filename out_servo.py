@@ -32,6 +32,7 @@ def servo_position(pos):
         while True:
             try:
                 wiringpi.pwmWrite(18,40)
+                time.sleep(1)
                 print("wiringpi.pwmWrite(18,40)")
             except KeyboardInterrupt:
                 # clean up
@@ -60,6 +61,9 @@ def servo_position(pos):
         while True:
             try:
                 wiringpi.pwmWrite(18,200)
+                time.sleep(1)
+                wiringpi.pwmWrite(18,40)
+                time.sleep(1)
                 print("wiringpi.pwmWrite(18,200)")
             except KeyboardInterrupt:
                 # clean up
