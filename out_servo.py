@@ -10,12 +10,14 @@ PWM_DIVISOR = 384
 PWM_RANGE = 1000
 
 # setup pin as an output
-wiringpi.pinMode(SERVO_PIN, 1)
+wiringpi.pinMode(SERVO_PIN, PWM_OUTPUT)
 # wiringpi.pinMode(SERVO_PIN,2)
 wiringpi.pwmSetMode(0)
 wiringpi.pwmSetClock(PWM_DIVISOR)
 wiringpi.pwmSetRange(PWM_RANGE)
 wiringpi.pwmWrite(SERVO_PIN, 40)
+
+print("Module out_servo.py have imported")
 
 def servo_position(pos):
     """ 

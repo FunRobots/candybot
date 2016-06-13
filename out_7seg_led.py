@@ -60,7 +60,7 @@ def display_4digits(code):
     Returns: 
         High output on appropriate 7-segment LEDs
     """
-    print("Start display_4digits")
+    # print("Start display_4digits")
 
     if code:
         s = str(code).rjust(4)
