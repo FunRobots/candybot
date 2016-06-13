@@ -7,7 +7,6 @@ GPIO.setwarnings(False)
 
 # segments = (24,10,19,21,23,22,15,11)
 segments =  (11,4,23,8,7,10,15,25)
-# 7seg_segment_pins (11,7,4,2,1,10,5,3) +  100R inline
 GPIO.setup(segments, GPIO.OUT, initial=1)
 #loop below is the same as line of code above
 # for segment in segments:
@@ -16,7 +15,6 @@ GPIO.setup(segments, GPIO.OUT, initial=1)
 
 # digits = (26,18,16,13)
 digits = (22,27,17,24)
-# 7seg_digit_pins (12,9,8,6) digits 0-3 respectively
 GPIO.setup(digits, GPIO.OUT, initial=0)
 #loop below is the same as line of code above
 # for digit in digits:
@@ -51,7 +49,6 @@ num = {' ':(0,0,0,0,0,0,0,0),
 #     '8':(1,1,1,1,1,1,0,0),
 #     '9':(1,1,1,1,0,1,0,0)}
 
-print("Module out_7seg_led.py have imported")
 
 def display_4digits(code):
     """ 
@@ -64,7 +61,6 @@ def display_4digits(code):
 
     if code:
         s = str(code).rjust(4)
-        # print(s)
 
     for digit in range(4):
         # print("Output digit on LED: {}".format(s[digit]))
@@ -83,3 +79,5 @@ def test_display_4digits(code):
             n -= 1
     finally:
         GPIO.cleanup()
+
+print("Module out_7seg_led.py have imported")

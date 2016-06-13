@@ -6,25 +6,22 @@ wiringpi.wiringPiSetupGpio()
 
 # setup WiringPi PWM
 SERVO_PIN = 18
-PWM_DIVISOR = 384
-PWM_RANGE = 1000
+PWM_DIVISOR = 384 # clock at 50kHz (20us tick)
+PWM_RANGE = 1000  # range at 1000 ticks (20ms)
 
 # setup pin as an output
 wiringpi.pinMode(SERVO_PIN, 2)
-# wiringpi.pinMode(SERVO_PIN,2)
 wiringpi.pwmSetMode(0)
 wiringpi.pwmSetClock(PWM_DIVISOR)
 wiringpi.pwmSetRange(PWM_RANGE)
-wiringpi.pwmWrite(SERVO_PIN, 0)
+wiringpi.pwmWrite(SERVO_PIN, 0) #theretically 50 (1ms) to 100 (2ms) on my servo 40-200 works ok
 
-print("Module out_servo.py have imported")
-
-def servo_position(pos):
+def set_servo_position(pos):
     """ 
     Params:
         0 - 0 degrees
-        1 - 90  degrees
-        2 - 180 degrees
+        90 - 90  degrees
+        180 - 180 degrees
     """
     
     if pos == 0:
@@ -43,7 +40,8 @@ def servo_position(pos):
                 wiringpi.pwmWrite(18,0)
                 print("Cleanup GPIO")
                 break
-    if pos == 1:
+    if pos == 90:
+        print("pos == 90")
         while True:
             try:
                 wiringpi.pwmWrite(18,120)
@@ -59,8 +57,8 @@ def servo_position(pos):
                 wiringpi.pwmWrite(18,0)
                 print("Cleanup GPIO")
                 break
-    if pos == 2:
-        print("pos == 2")
+    if pos == 180:
+        print("pos == 180")
         while True:
             try:
                 wiringpi.pwmWrite(18,200)
@@ -78,3 +76,4 @@ def servo_position(pos):
                 print("Cleanup GPIO")
                 break
 
+print("Module out_servo.py have imported")
