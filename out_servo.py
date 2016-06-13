@@ -15,7 +15,7 @@ wiringpi.pinMode(SERVO_PIN, 2)
 wiringpi.pwmSetMode(0)
 wiringpi.pwmSetClock(PWM_DIVISOR)
 wiringpi.pwmSetRange(PWM_RANGE)
-wiringpi.pwmWrite(SERVO_PIN, 40)
+wiringpi.pwmWrite(SERVO_PIN, 0)
 
 print("Module out_servo.py have imported")
 
@@ -40,20 +40,23 @@ def servo_position(pos):
                 print("KeyboardInterrupt Exception")
                 break
             finally:
-                wiringpi.pwmWrite(18,40)
+                wiringpi.pwmWrite(18,0)
                 print("Cleanup GPIO")
                 break
     if pos == 1:
         while True:
             try:
                 wiringpi.pwmWrite(18,120)
+                time.sleep(1)
+                wiringpi.pwmWrite(18,40)
+                time.sleep(1)
             except KeyboardInterrupt:
                 # clean up
-                wiringpi.pwmWrite(18, 40)
+                wiringpi.pwmWrite(18, 0)
                 print("KeyboardInterrupt Exception")
                 break
             finally:
-                wiringpi.pwmWrite(18,40)
+                wiringpi.pwmWrite(18,0)
                 print("Cleanup GPIO")
                 break
     if pos == 2:
@@ -67,11 +70,11 @@ def servo_position(pos):
                 print("wiringpi.pwmWrite(18,200)")
             except KeyboardInterrupt:
                 # clean up
-                wiringpi.pwmWrite(18, 40)
+                wiringpi.pwmWrite(18, 0)
                 print("KeyboardInterrupt Exception")
                 break
             finally:
-                wiringpi.pwmWrite(18,40)
+                wiringpi.pwmWrite(18,0)
                 print("Cleanup GPIO")
                 break
 
