@@ -4,16 +4,14 @@ import time
 #use Broadcom pin numbers
 wiringpi.wiringPiSetupGpio()
 
-
-# setup pin as an output
-wiringpi.pinMode(SERVO_PIN, 1)
-
 # setup WiringPi PWM
 SERVO_PIN = 18
 PWM_DIVISOR = 384
 PWM_RANGE = 1000
 
-wiringpi.pinMode(SERVO_PIN,2)
+# setup pin as an output
+wiringpi.pinMode(SERVO_PIN, 1)
+# wiringpi.pinMode(SERVO_PIN,2)
 wiringpi.pwmSetMode(0)
 wiringpi.pwmSetClock(PWM_DIVISOR)
 wiringpi.pwmSetRange(PWM_RANGE)
