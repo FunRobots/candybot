@@ -19,7 +19,7 @@ gpiozero.devices.DefaultPin = NativePin
 
 
 #settings for servo 
-out_servo.servo_position(0)
+out_servo.set_servo_position(0)
 
 #settigns for button
 button = Button(14)
