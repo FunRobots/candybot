@@ -3,23 +3,23 @@
 import RPi.GPIO as GPIO
 import time
 import random
+import wiringpi
 from events_tw import checkMentionInTwitter
 import out_7seg_led
-from gpiozero_ servo import Servo
-
-from gpiozero.pins.native import NativePin
+import out_servo 
+from gpiozero import Button
 import gpiozero.devices
+from gpiozero.pins.native import NativePin
 
-print("import gpiozero.devices")
+
+# print("import gpiozero.devices")
 # Force the default pin implementation to be NativePin
-gpiozero.devices.DefaultPin = NativePin
-from gpiozero import Button, PWMOutputDevice
-from gpiozero.pins.pigpiod import PiGPIOPin
 
-print("PiGPIOPin")
-
-
+#use Broadcom (BCM) pin numbers
+# wiringpi.wiringPiSetupGpio()
 GPIO.setmode(GPIO.BCM)
+gpiozero.devices.DefaultPin = NativePin
+
 
 #settings for servo 
 # GPIO.setup(18,GPIO.OUT)
@@ -28,9 +28,22 @@ GPIO.setmode(GPIO.BCM)
 # l_pos = 12.5
 # r_pos = 2.5
 # p.start(5)
+out_servo.servo_position(0)
 
-servo = Servo(18)
-serv.angle(180)
+
+### Setup for servo control
+SERVO_PIN = 18
+# setup pin as an output
+# wiringpi.pinMode(SERVO_PIN, 1)
+# setup PWM
+# wiringpi.softPwmCreate(SERVO_PIN, 0, 100)
+
+# change duty cycle
+# wiringpi.softPwmWrite(SERVO_PIN, 1)
+# wiringpi.delay(200)
+# wiringpi.softPwmWrite(SERVO_PIN, 20)
+# wiringpi.delay(200)
+
 
 # servo = PWMOutputDevice(PiGPIOPin())
 # servo.set_servo_pulsewidth(18, 0)
@@ -80,6 +93,7 @@ try:
             # p.ChangeDutyCycle(l_pos) #put servo to left position
             # servo.set_servo(18, 1200)
             # servo.set_servo_pulsewidth(18, 1000)
+            out_servo.servo_position(2)
             print("Left")
             time.sleep(1)
 
@@ -91,6 +105,7 @@ try:
             # p.ChangeDutyCycle(r_pos) #put servo to right position
             # servo.set_servo(18, 2500)
             # servo.set_servo_pulsewidth(18, 2000)
+            out_servo.servo_position(0)
             print("Right")
             time.sleep(1)
 
