@@ -32,7 +32,7 @@ out_servo.servo_position(0)
 
 
 ### Setup for servo control
-SERVO_PIN = 18
+# SERVO_PIN = 18
 # setup pin as an output
 # wiringpi.pinMode(SERVO_PIN, 1)
 # setup PWM
@@ -116,7 +116,7 @@ try:
     print("Good bye!")
 
 except KeyboardInterrupt:
-        p.stop()
+        # p.stop()
         GPIO.cleanup()
 
 finally:

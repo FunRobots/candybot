@@ -33,11 +33,11 @@ def servo_position(pos):
                 wiringpi.pwmWrite(18,40)
             except KeyboardInterrupt:
                 # clean up
-                wiringpi.pwmWrite(18, 0)
+                wiringpi.pwmWrite(18, 40)
                 print("KeyboardInterrupt Exception")
                 break
             finally:
-                wiringpi.pwmWrite(18,0)
+                wiringpi.pwmWrite(18,40)
                 print("Cleanup GPIO")
                 break
     if pos == 1:
@@ -46,11 +46,11 @@ def servo_position(pos):
                 wiringpi.pwmWrite(18,120)
             except KeyboardInterrupt:
                 # clean up
-                wiringpi.pwmWrite(18, 0)
+                wiringpi.pwmWrite(18, 40)
                 print("KeyboardInterrupt Exception")
                 break
             finally:
-                wiringpi.pwmWrite(18,0)
+                wiringpi.pwmWrite(18,40)
                 print("Cleanup GPIO")
                 break
     if pos == 2:
@@ -59,11 +59,11 @@ def servo_position(pos):
                 wiringpi.pwmWrite(18,200)
             except KeyboardInterrupt:
                 # clean up
-                wiringpi.pwmWrite(18, 0)
+                wiringpi.pwmWrite(18, 40)
                 print("KeyboardInterrupt Exception")
                 break
             finally:
-                wiringpi.pwmWrite(18,0)
+                wiringpi.pwmWrite(18,40)
                 print("Cleanup GPIO")
                 break
 
