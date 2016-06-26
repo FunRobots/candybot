@@ -19,8 +19,9 @@ ______________________
 
 1. Setup your RaspberryPi with python environment 
 	
-	pip install python-twitter
-	sudo apt-get install python3-gpiozero
+* ``pip install python-twitter``
+* ``sudo apt-get install python3-gpiozero``
+* ``sudo easy_install -U RPIO``
 
 2. Setup config for Twitter 
 	Workapble packages: python-twitter  (or twython, tweepy)
