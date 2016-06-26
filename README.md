@@ -14,8 +14,8 @@ v0.1 - First prototype. But listen whether his name is mentined in Twitter,
 
 
 
-Insturctions for makers
-_______________________
+Insturctions for maker
+______________________
 
 1. Setup your RaspberryPi with python environment 
 	
