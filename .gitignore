@@ -1,0 +1,9 @@
+# Project
+secret.py
+
+# Common
+.DS_Store
+TODO.txt
+__pycache__/
+*.pyc
+venv/
