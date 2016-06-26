@@ -8,9 +8,10 @@ from gpiozero import Button
 import gpiozero.devices
 from gpiozero.pins.native import NativePin
 
-from events_tw import checkMentionInTwitter
-import out_7seg_led
-import out_servo 
+from twitter_api import checkMentionInTwitter
+from twitter_stream import listenTwitter
+import led_7seg
+import servo 
 
 
 #use Broadcom (BCM) pin numbers
@@ -19,7 +20,7 @@ gpiozero.devices.DefaultPin = NativePin
 
 
 #settings for servo 
-out_servo.set_servo_position(0)
+servo.set_servo_position(0)
 
 #settigns for button
 button = Button(14)
@@ -35,12 +36,17 @@ try:
         ### Wait for Button press
         print("Make a tweet with following: @fun_robots and #{code}  And then, press the BUTTON".format(code=code))
 
-        ###Display code on 7seg-LED
-        while button.is_pressed != True: 
-            out_7seg_led.display_4digits(code)                   
+        ### Mode 1: Check @fun_robots mentioned in Twitter, press Button to check
+        # #Display code on 7seg-LED
+        # while button.is_pressed != True: 
+        #     led_7seg.display_4digits(code)                   
 
-        ### Check for Twitter mentions and #code
-        get_candy = checkMentionInTwitter(code)
+        # ##Check for Twitter mentions and #code
+        # get_candy = checkMentionInTwitter(code)
+
+        ### Mode 2: Listen Twitter Stream API and get a candy automatically
+        get_candy = listenTwitter(track='@fun_robots', code=code)
+
 
         ### Control candy dispenser servo 
         if get_candy:

@@ -36,3 +36,10 @@ ______________________
 	TW_ACCESS_TOKEN_KEY='put_your__access_token_key_here'
 	TW_ACCESS_TOKEN_SECRET='put_your_access_token_secret_here'
 
+
+ References for examples and tips
+_________________________________
+
+1. Using Twitter Stream API
+* http://socialmedia-class.org/twittertutorial.html 
+

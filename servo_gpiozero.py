@@ -1,4 +1,9 @@
+### This file is an attempt to create a class to run DMA PWM based on gpiozero library
+# It's not working currently  
+
+
 import gpiozero
+from gpiozero import PWMOutputDevice
 
 
 class Servo(PWMOutputDevice):
@@ -75,4 +80,4 @@ class Servo(PWMOutputDevice):
             * value / self._max_angle
         ) + self._min_duty_cycle
         self._write(duty_cycle)
-Status API Training Shop Blog About
+
