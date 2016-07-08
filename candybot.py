@@ -8,7 +8,6 @@ from gpiozero import Button
 import gpiozero.devices
 from gpiozero.pins.native import NativePin
 
-from twitter_api import checkMentionInTwitter
 from twitter_stream import listenTwitter
 import led_7seg
 import servo 
@@ -45,7 +44,7 @@ try:
         # get_candy = checkMentionInTwitter(code)
 
         ### Mode 2: Listen Twitter Stream API and get a candy automatically
-        get_candy = listenTwitter(track='@fun_robots', code=code)
+        get_candy = listenTwitter(track='@fun_robots, #fun_robots, #funrobots.ru', code=code)
 
 
         ### Control candy dispenser servo 
@@ -53,12 +52,12 @@ try:
             print(get_candy)
 
             ### Open Candy Jar 
-            out_servo.set_servo_position(180)
+            servo.set_servo_position(20)
             print("Left")
-            time.sleep(1)
+            time.sleep(0.25)
 
             ### Close Candy Jar 
-            out_servo.set_servo_position(0)
+            servo.set_servo_position(0)
             print("Right")
             time.sleep(1)
  

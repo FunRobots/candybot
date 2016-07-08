@@ -1,5 +1,8 @@
+#!/usr/bin/python
+
 import wiringpi
 import time
+import math
 
 #use Broadcom pin numbers
 wiringpi.wiringPiSetupGpio()
@@ -24,48 +27,14 @@ def set_servo_position(pos):
         180 - 180 degrees
     """
     
-    if pos == 0:
-        print("pos == 0")
+    move = 40 + math.floor(pos * (200 - 40) / 180)
+    if move:
+        print("move: ", move)
         while True:
             try:
-                wiringpi.pwmWrite(18,40)
-                time.sleep(1)
-                print("wiringpi.pwmWrite(18,40)")
-            except KeyboardInterrupt:
-                # clean up
-                wiringpi.pwmWrite(18, 40)
-                print("KeyboardInterrupt Exception")
-                break
-            finally:
-                wiringpi.pwmWrite(18,0)
-                print("Cleanup GPIO")
-                break
-    if pos == 90:
-        print("pos == 90")
-        while True:
-            try:
-                wiringpi.pwmWrite(18,120)
-                time.sleep(1)
-                wiringpi.pwmWrite(18,40)
-                time.sleep(1)
-            except KeyboardInterrupt:
-                # clean up
-                wiringpi.pwmWrite(18, 0)
-                print("KeyboardInterrupt Exception")
-                break
-            finally:
-                wiringpi.pwmWrite(18,0)
-                print("Cleanup GPIO")
-                break
-    if pos == 180:
-        print("pos == 180")
-        while True:
-            try:
-                wiringpi.pwmWrite(18,200)
-                time.sleep(1)
-                wiringpi.pwmWrite(18,40)
-                time.sleep(1)
-                print("wiringpi.pwmWrite(18,200)")
+                wiringpi.pwmWrite(18,move)
+                time.sleep(0.5)
+                print("wiringpi.pwmWrite(18,{})".format(move))
             except KeyboardInterrupt:
                 # clean up
                 wiringpi.pwmWrite(18, 0)

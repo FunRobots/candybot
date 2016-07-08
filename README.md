@@ -19,7 +19,7 @@ ______________________
 
 1. Setup your RaspberryPi with python environment 
 	
-* ``pip install python-twitter``
+* ``sudo pip install twitter``  (download https://pypi.python.org/pypi/twitter with stream methods) 
 * ``sudo apt-get install python3-gpiozero``
 * ``sudo easy_install -U RPIO``
 
@@ -37,7 +37,7 @@ ______________________
 	TW_ACCESS_TOKEN_SECRET='put_your_access_token_secret_here'
 
 
- References for examples and tips
+References for examples and tips
 _________________________________
 
 1. Using Twitter Stream API

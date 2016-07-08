@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python 
 
 # Import the necessary package to process data in JSON format
 try:
