@@ -39,17 +39,7 @@ ______________________
 	TW_ACCESS_TOKEN_SECRET='put_your_access_token_secret_here'
 
 
-<<<<<<< Updated upstream
-
 ##References for examples and tips
-
-=======
-<<<<<<< HEAD
-References for examples and tips
-=======
-##References for examples and tips
->>>>>>> bb2ad98b411b8929554b3042df8a53402b2d4b9a
->>>>>>> Stashed changes
 _________________________________
 
 ### Using Twitter Stream API
