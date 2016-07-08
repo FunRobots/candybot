@@ -1,12 +1,14 @@
-CandyBot
+#CandyBot
 ==========
 
+##About
 Candybot is a simple bot that gives a candy for social actions. Run from a Raspberry Pi.
 
-Python Code
+Current version: v0.2
 
+##Changelog:
+v0.2 - Add Twitter Stream API to listen tweets, remove button (started twitter api request to check bot mentions in tweets). It works faster and overcome api time rate limit. 
 
-Verstions:
 v0.1 - First prototype. But listen whether his name is mentined in Twitter, 
 	as well as a secret code he give to a User. If user tweet a message with 
 	@fun_robots and some secret code, he will get a candy. Just simple, just fun
@@ -14,7 +16,7 @@ v0.1 - First prototype. But listen whether his name is mentined in Twitter,
 
 
 
-Insturctions for maker
+##Instructions for makers
 ______________________
 
 1. Setup your RaspberryPi with python environment 
@@ -37,9 +39,13 @@ ______________________
 	TW_ACCESS_TOKEN_SECRET='put_your_access_token_secret_here'
 
 
+<<<<<<< HEAD
 References for examples and tips
+=======
+##References for examples and tips
+>>>>>>> bb2ad98b411b8929554b3042df8a53402b2d4b9a
 _________________________________
 
-1. Using Twitter Stream API
+### Using Twitter Stream API
 * http://socialmedia-class.org/twittertutorial.html 
 
