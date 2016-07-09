@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+import threading
 
 GPIO.setmode(GPIO.BCM) # GPIO.BOARD is used here!!!
 GPIO.setwarnings(False)
@@ -50,26 +51,33 @@ num = {' ':(0,0,0,0,0,0,0,0),
 #     '9':(1,1,1,1,0,1,0,0)}
 
 
-def display_4digits(code, signal=True):
+def display_4digits(code, display_on=True):
     """ 
     Params:
         code: string of 4 digits code or 4-digit number
-        signal: boolean value on True (means  'start') or False (means 'stop') to control display
+        display_on: boolean value on True (means  'start') or False (means 'stop') to control display
     Returns: 
         High output on appropriate 7-segment LEDs
     """
     # print("Start display_4digits")
 
-    if code:
-        s = str(code).rjust(4)
+    t = threading.currentThread()
+    while getattr(t, "display_on", True):
+        print("Display is on: {}".format(display_on))
 
-    while signal is True:
+        if code:
+            s = str(code).rjust(4)
+
         for digit in range(4):
             # print("Output digit on LED: {}".format(s[digit]))
             GPIO.output(segments, (num[s[digit]]))
             GPIO.output(digits[digit], 1)
             time.sleep(0.001)
             GPIO.output(digits[digit], 0)
+
+    print("Stopping as you wish.") 
+    
+
 
 
 ###Test display_4digits()

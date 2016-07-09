@@ -37,21 +37,18 @@ try:
         print("Make a tweet with following: @fun_robots and #{code}  And then, press the BUTTON".format(code=code))
         
         #Display code on 7seg-LED
-        display_signal = True
-        display = threading.Thread(target=led_7seg.display_4digits, args=(code, display_singal))
-        display.daemon = True
-        display.start()                   
+        display = threading.Thread(target=led_7seg.display_4digits, args=(code,))
+        display.start() 
 
-        # ##Check for Twitter mentions and #code
-        # get_candy = checkMentionInTwitter(code)
 
         ### Mode 2: Listen Twitter Stream API and get a candy automatically
         get_candy = listenTwitter(track='@fun_robots, #fun_robots, #funrobots.ru', code=code)
-
-
         ### Control candy dispenser servo 
         if get_candy:
             print(get_candy)
+            # switch off display 
+            display.display_on = False 
+
 
             ### Open Candy Jar 
             servo.set_servo_position(20)
