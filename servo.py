@@ -4,7 +4,7 @@ import wiringpi
 import time
 import math
 
-#use Broadcom pin numbers
+#use BCM pin numbers
 wiringpi.wiringPiSetupGpio()
 
 # setup WiringPi PWM
@@ -22,28 +22,27 @@ wiringpi.pwmWrite(SERVO_PIN, 0) #theretically 50 (1ms) to 100 (2ms) on my servo 
 def set_servo_position(pos):
     """ 
     Params:
-        0 - 0 degrees
-        90 - 90  degrees
-        180 - 180 degrees
+        pos: angle to turn servo, in degrees
     """
     
     move = 40 + math.floor(pos * (200 - 40) / 180)
+
     if move:
         print("move: ", move)
         while True:
             try:
-                wiringpi.pwmWrite(18,move)
-                time.sleep(0.5)
-                print("wiringpi.pwmWrite(18,{})".format(pos))
-            except KeyboardInterrupt:
+                wiringpi.pwmWrite(SERVO_PIN,move)
+                # time.sleep(0.5)
+                print("wiringpi.pwmWrite(18,{})".format(move))
+            except:
                 # clean up
                 wiringpi.pwmWrite(18, 0)
-                print("KeyboardInterrupt Exception")
+                print("Exception")
                 break
-            finally:
-                wiringpi.pwmWrite(18,0)
-                print("Cleanup GPIO")
-                break
+            # finally:
+            #     wiringpi.pwmWrite(18,0)
+            #     print("Cleanup GPIO")
+            #     break
 
 print("Module out_servo.py have imported")
 
@@ -59,7 +58,7 @@ def test_servo(pos):
             time.sleep(0.25)
 
             ### Close Candy Jar 
-            servo.set_servo_position(0)
+            set_servo_position(0)
             print("Right")
             time.sleep(1)
 
@@ -67,10 +66,6 @@ def test_servo(pos):
             # clean up
             set_servo_position(0)
             print("KeyboardInterrupt Exception")
-            break
-        finally:
-            set_servo_position(0)
-            print("Cleanup GPIO")
             break
 
 
