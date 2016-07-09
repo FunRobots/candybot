@@ -25,26 +25,25 @@ def set_servo_position(pos):
         pos: angle to turn servo, in degrees
     """
     
-    move = 40 + math.floor(pos * (200 - 40) / 180)
-    print("move: {}".format(move))
+    move = int(40 + math.floor(pos * (200 - 40) / 180))
+    print("pos: {}".format(pos))
     print("move: {}".format(move))
 
     if move:
         print("move: ", move)
-        while True:
-            try:
-                wiringpi.pwmWrite(SERVO_PIN,move)
-                # time.sleep(0.5)
-                print("wiringpi.pwmWrite(18,{})".format(move))
-            except:
-                # clean up
-                wiringpi.pwmWrite(18, 0)
-                print("Exception")
-                break
-            # finally:
-            #     wiringpi.pwmWrite(18,0)
-            #     print("Cleanup GPIO")
-            #     break
+        try:
+            wiringpi.pwmWrite(SERVO_PIN, move)
+            # time.sleep(0.5)
+            # print("wiringpi.pwmWrite(18,{})".format(move))
+        except:
+            # clean up
+            wiringpi.pwmWrite(18, 0)
+            print("Exception")
+            break
+        # finally:
+        #     wiringpi.pwmWrite(18,0)
+        #     print("Cleanup GPIO")
+        #     break
 
 print("Module out_servo.py have imported")
 
