@@ -34,14 +34,14 @@ try:
         print("PRINT code:", code, "\n")
   
         ### Wait for Button press
-        print("Make a tweet with following: @fun_robots and #{code}  And then, press the BUTTON".format(code=code))
+        print("Make a tweet with following: @fun_robots and #{code}".format(code=code))
         
         #Display code on 7seg-LED
         display = threading.Thread(target=led_7seg.display_4digits, args=(code,))
         display.start() 
 
 
-        ### Mode 2: Listen Twitter Stream API and get a candy automatically
+        ### Mode 2: Listen Twitter Stream API and get a candy automaticallynani
         get_candy = listenTwitter(track='@fun_robots, #fun_robots, #funrobots.ru', code=code)
         ### Control candy dispenser servo 
         if get_candy:

@@ -61,13 +61,13 @@ def display_4digits(code, display_on=True):
     """
     # print("Start display_4digits")
 
+    print("Display is on: {}".format(display_on))
+    
+
     t = threading.currentThread()
     while getattr(t, "display_on", True):
-        print("Display is on: {}".format(display_on))
-
         if code:
             s = str(code).rjust(4)
-
         for digit in range(4):
             # print("Output digit on LED: {}".format(s[digit]))
             GPIO.output(segments, (num[s[digit]]))
@@ -75,6 +75,8 @@ def display_4digits(code, display_on=True):
             time.sleep(0.001)
             GPIO.output(digits[digit], 0)
 
+    # #clean up GPIO to correct dispaly next digits
+    # GPIO.cleanup()
     print("Stopping as you wish.") 
     
 
