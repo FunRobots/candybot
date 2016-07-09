@@ -26,6 +26,8 @@ def set_servo_position(pos):
     """
     
     move = 40 + math.floor(pos * (200 - 40) / 180)
+    print("move: {}".format(move))
+    print("move: {}".format(move))
 
     if move:
         print("move: ", move)
