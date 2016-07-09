@@ -34,7 +34,7 @@ def set_servo_position(pos):
             try:
                 wiringpi.pwmWrite(18,move)
                 time.sleep(0.5)
-                print("wiringpi.pwmWrite(18,{})".format(move))
+                print("wiringpi.pwmWrite(18,{})".format(pos))
             except KeyboardInterrupt:
                 # clean up
                 wiringpi.pwmWrite(18, 0)
@@ -46,3 +46,33 @@ def set_servo_position(pos):
                 break
 
 print("Module out_servo.py have imported")
+
+
+
+###Test display_4digits()
+def test_servo(pos):
+    while True:
+        try:
+            ### Open Candy Jar 
+            set_servo_position(pos)
+            print("Left")
+            time.sleep(0.25)
+
+            ### Close Candy Jar 
+            servo.set_servo_position(0)
+            print("Right")
+            time.sleep(1)
+
+        except KeyboardInterrupt:
+            # clean up
+            set_servo_position(0)
+            print("KeyboardInterrupt Exception")
+            break
+        finally:
+            set_servo_position(0)
+            print("Cleanup GPIO")
+            break
+
+
+if __name__ == "__main__":
+    test_servo(20)
