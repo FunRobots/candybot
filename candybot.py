@@ -2,6 +2,7 @@
 
 import RPi.GPIO as GPIO
 import time
+import threading
 import random
 import wiringpi
 from gpiozero import Button
@@ -34,11 +35,12 @@ try:
   
         ### Wait for Button press
         print("Make a tweet with following: @fun_robots and #{code}  And then, press the BUTTON".format(code=code))
-
-        ### Mode 1: Check @fun_robots mentioned in Twitter, press Button to check
-        # #Display code on 7seg-LED
-        # while button.is_pressed != True: 
-        #     led_7seg.display_4digits(code)                   
+        
+        #Display code on 7seg-LED
+        display_signal = True
+        display = threading.Thread(target=led_7seg.display_4digits, args=(code, display_singal))
+        display.daemon = True
+        display.start()                   
 
         # ##Check for Twitter mentions and #code
         # get_candy = checkMentionInTwitter(code)

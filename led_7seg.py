@@ -50,10 +50,11 @@ num = {' ':(0,0,0,0,0,0,0,0),
 #     '9':(1,1,1,1,0,1,0,0)}
 
 
-def display_4digits(code):
+def display_4digits(code, signal=True):
     """ 
     Params:
-        digits: string of 4 digits code or 4-digit number
+        code: string of 4 digits code or 4-digit number
+        signal: boolean value on True (means  'start') or False (means 'stop') to control display
     Returns: 
         High output on appropriate 7-segment LEDs
     """
@@ -62,12 +63,13 @@ def display_4digits(code):
     if code:
         s = str(code).rjust(4)
 
-    for digit in range(4):
-        # print("Output digit on LED: {}".format(s[digit]))
-        GPIO.output(segments, (num[s[digit]]))
-        GPIO.output(digits[digit], 1)
-        time.sleep(0.001)
-        GPIO.output(digits[digit], 0)
+    while signal is True:
+        for digit in range(4):
+            # print("Output digit on LED: {}".format(s[digit]))
+            GPIO.output(segments, (num[s[digit]]))
+            GPIO.output(digits[digit], 1)
+            time.sleep(0.001)
+            GPIO.output(digits[digit], 0)
 
 
 ###Test display_4digits()
