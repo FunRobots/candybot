@@ -9,18 +9,10 @@ GPIO.setwarnings(False)
 # segments = (24,10,19,21,23,22,15,11)
 segments =  (11,4,23,8,7,10,15,25)
 GPIO.setup(segments, GPIO.OUT, initial=1)
-#loop below is the same as line of code above
-# for segment in segments:
-#     GPIO.setup(segment, GPIO.OUT)
-#     GPIO.output(segment, 0)
 
 # digits = (26,18,16,13)
 digits = (22,27,17,24)
 GPIO.setup(digits, GPIO.OUT, initial=0)
-#loop below is the same as line of code above
-# for digit in digits:
-#     GPIO.setup(digit, GPIO.OUT)
-#     GPIO.output(digit, 1)
 
 #Commode anode 7segLED specs
 #          (a,b,c,d,e,f,g,dp)
@@ -53,16 +45,17 @@ num = {' ':(0,0,0,0,0,0,0,0),
 
 def display_4digits(code, display_on=True):
     """ 
+    Control 7seg LED display to show #code
+
     Params:
         code: string of 4 digits code or 4-digit number
         display_on: boolean value on True (means  'start') or False (means 'stop') to control display
     Returns: 
         High output on appropriate 7-segment LEDs
     """
-    # print("Start display_4digits")
 
     print("Display is on: {}".format(display_on))
-    
+
 
     t = threading.currentThread()
     while getattr(t, "display_on", True):
@@ -78,8 +71,6 @@ def display_4digits(code, display_on=True):
     # #clean up GPIO to correct dispaly next digits
     # GPIO.cleanup()
     print("Stopping as you wish.") 
-    
-
 
 
 ###Test display_4digits()

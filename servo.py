@@ -21,6 +21,8 @@ wiringpi.pwmWrite(SERVO_PIN, 0) #theretically 50 (1ms) to 100 (2ms) on my servo 
 
 def set_servo_position(pos):
     """ 
+    Turn servo on specified angle in degrees
+
     Params:
         pos: angle to turn servo, in degrees
     """
@@ -39,11 +41,6 @@ def set_servo_position(pos):
             # clean up
             wiringpi.pwmWrite(18, 0)
             print("Exception")
-            break
-        # finally:
-        #     wiringpi.pwmWrite(18,0)
-        #     print("Cleanup GPIO")
-        #     break
 
 print("Module out_servo.py have imported")
 

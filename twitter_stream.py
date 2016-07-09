@@ -33,6 +33,9 @@ twitter_stream = TwitterStream(auth=oauth)
 
 def listenTwitter(track, code):
 	""" 
+	Listen Twitter for mention of keywords stated in 'track' and 'code'. 
+	Use Twitter stream API
+
     Params:
         track: message to track in Tweets 
         code: unique code from CandyBot
@@ -52,7 +55,6 @@ def listenTwitter(track, code):
 				return(True)    
 			else:
 				break 
-
 	return(False)
 
 

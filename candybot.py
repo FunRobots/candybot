@@ -5,9 +5,6 @@ import time
 import threading
 import random
 import wiringpi
-from gpiozero import Button
-import gpiozero.devices
-from gpiozero.pins.native import NativePin
 
 from twitter_stream import listenTwitter
 import led_7seg
@@ -16,15 +13,9 @@ import servo
 
 #use Broadcom (BCM) pin numbers
 GPIO.setmode(GPIO.BCM)
-gpiozero.devices.DefaultPin = NativePin
-
 
 #settings for servo 
 servo.set_servo_position(0)
-
-#settigns for button
-button = Button(14)
-
 
 try:
     while True:
@@ -48,7 +39,6 @@ try:
             print(get_candy)
             # switch off display 
             display.display_on = False 
-
 
             ### Open Candy Jar 
             servo.set_servo_position(20)
